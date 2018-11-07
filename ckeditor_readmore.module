@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Adds read more plugin to CKEditor.
+ */
+
+/**
+ * Implements hook_ckeditor_plugin().
+ * Hook to register the CKEditor plugin - it would appear in the plugins list on the profile setting page.
+ */
+function ckeditor_readmore_ckeditor_plugin() {
+  return array(
+    'readmore' => array(
+      'name' => 'readmore',
+      'desc' => t('CKEditor Read more'),
+      'path' => drupal_get_path('module', 'ckeditor_readmore') . '/plugins/readmore/',
+      'buttons' => array(
+        'btn_readmore' => array(
+          'icon' => 'icons/readmore.png',
+          'label' => 'Read more',
+        ),
+      )
+    ),
+  );
+}
