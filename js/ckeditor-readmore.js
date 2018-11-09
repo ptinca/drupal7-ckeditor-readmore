@@ -18,7 +18,7 @@
 
         $('body').once('ckeditorReadmoreToggleEvent').on('click', '.ckeditor-readmore-btn', function (ev) {
           $(this).next().slideToggle();
-        })
+        });
       }
     }
   };

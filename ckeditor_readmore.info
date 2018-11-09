@@ -2,7 +2,6 @@ name = CKEditor Read more
 description = Adds a CKEditor Read more plugin.
 core = 7.x
 package = user-interface
-version = 7.x
 
 dependencies[] = ckeditor
 dependencies[] = jquery_update

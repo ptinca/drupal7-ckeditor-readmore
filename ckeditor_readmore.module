@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Adds read more plugin to CKEditor.
@@ -6,7 +7,6 @@
 
 /**
  * Implements hook_ckeditor_plugin().
- * Hook to register the CKEditor plugin - it would appear in the plugins list on the profile setting page.
  */
 function ckeditor_readmore_ckeditor_plugin() {
   return array(
@@ -19,7 +19,46 @@ function ckeditor_readmore_ckeditor_plugin() {
           'icon' => 'icons/readmore.png',
           'label' => 'Read more',
         ),
-      )
+      ),
     ),
   );
+}
+
+/**
+ * Implements hook_help().
+ */
+function ckeditor_readmore_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#ckeditor_readmore':
+
+      $filepath = dirname(__FILE__) . '/README.md';
+      if (file_exists($filepath)) {
+        $readme = file_get_contents($filepath);
+      }
+      else {
+        $filepath = dirname(__FILE__) . '/README.txt';
+        if (file_exists($filepath)) {
+          $readme = file_get_contents($filepath);
+        }
+      }
+      if (!isset($readme)) {
+        return NULL;
+      }
+      if (module_exists('markdown')) {
+        $filters = module_invoke('markdown', 'filter_info');
+        $info = $filters['filter_markdown'];
+    
+        if (function_exists($info['process callback'])) {
+          $output = $info['process callback']($readme, NULL);
+        }
+        else {
+          $output = '<pre>' . $readme . '</pre>';
+        }
+      }
+      else {
+        $output = '<pre>' . $readme . '</pre>';
+      }
+
+      return $output;
+  }
 }

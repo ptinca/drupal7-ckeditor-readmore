@@ -1,11 +1,11 @@
-(function($) {
+(function ($) {
   CKEDITOR.plugins.add('readmore', {
-    init: function(editor) {
-        
+    init: function (editor) {
+
       editor.ui.addButton('btn_readmore', {
         label: 'Read more',
         command: 'ckeditor_readmore',
-        icon: this.path + 'icons/readmore.png',
+        icon: this.path + 'icons/readmore.png'
       });
 
       var cssPath = this.path + 'readmore.css';
@@ -38,7 +38,7 @@
 
         exec: function (editor) {
 
-          var selectedHtml = "";
+          var selectedHtml = '';
           var selection = editor.getSelection();
 
           if (selection) {
