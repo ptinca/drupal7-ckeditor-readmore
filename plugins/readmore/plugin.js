@@ -1,4 +1,6 @@
 (function ($) {
+  'use strict';
+
   CKEDITOR.plugins.add('readmore', {
     init: function (editor) {
 
@@ -45,8 +47,6 @@
             selectedHtml = getSelectionHtml(selection);
           }
 
-          console.log(selectedHtml);
-
           var div = new CKEDITOR.dom.element.createFromHtml(
             '<div class="ckeditor-readmore">' + selectedHtml + '</div>');
           editor.insertElement(div);
@@ -69,7 +69,8 @@
               var child = children[i];
               if (typeof child.outerHTML === 'string') {
                 html += child.outerHTML;
-              } else {
+              }
+              else {
                 html += child.textContent;
               }
             }

@@ -47,7 +47,7 @@ function ckeditor_readmore_help($path, $arg) {
       if (module_exists('markdown')) {
         $filters = module_invoke('markdown', 'filter_info');
         $info = $filters['filter_markdown'];
-    
+
         if (function_exists($info['process callback'])) {
           $output = $info['process callback']($readme, NULL);
         }
